@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Revan</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --muted:#6b7280;
+      --accent:#2563eb;
+      --card:#f8fafc;
+      --radius:12px;
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      padding:20px;
+      background: linear-gradient(180deg,#fbfdff 0%, #f1f7ff 100%);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+    .container{max-width:1000px;margin:0 auto;}
+
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:grid;place-items:center;color:white;font-weight:700;box-shadow:0 6px 18px rgba(37,99,235,0.14)}
+    nav{display:flex;gap:14px;flex-wrap:wrap;}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600}
+    nav a:hover{color:var(--accent);background:rgba(37,99,235,0.06)}
+
+    .hero {
+  display: grid;
+  grid-template-columns:144px 1fr;
+  gap:20px;
+  align-items:center;
+  background: var(--card);
+  padding:22px;
+  border-radius: var(--radius);
+  box-shadow:0 8px 30px rgba(2,6,23,0.06);
+}
+
+.avatar {
+  width:144px;
+  height:144px;
+  border-radius:16px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(15,23,42,0.04);
+  background:linear-gradient(180deg,#fff 0%, #f1f5f9 100%);
+}
+
+.avatar img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.hero h1 { margin:0; font-size:22px; }
+.hero p { margin:6px 0 0; color:var(--muted); }
+.cta { margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; }
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-ghost{border:1px solid rgba(15,23,42,0.06);background:transparent;color:var(--muted)}
+
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px}
+    main{display:flex;flex-direction:column;gap:12px;}
+    .card{background:linear-gradient(180deg,#fff, #fbfdff);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.04)}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .project{padding:12px;border-radius:10px;background:linear-gradient(180deg,#ffffff,#f8fafc);border:1px solid rgba(2,6,23,0.03)}
+    .project h4{margin:4px 0 6px}
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .tag{font-size:12px;padding:6px 8px;border-radius:999px;background:#eef2ff;color:#3730a3}
+
+    .profile-card{text-align:center}
+    .profile-card h3{margin:8px 0 2px}
+    .profile-card p{margin:0;color:var(--muted);font-size:14px}
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;justify-content:center}
+    .skill{padding:8px 10px;border-radius:999px;background:#f1f5f9;font-weight:600;font-size:13px}
+
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea{padding:10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);font-family:inherit}
+    textarea{min-height:100px}
+    .muted{color:var(--muted);font-size:13px}
+
+    footer{text-align:center;margin-top:20px;color:var(--muted);font-size:13px}
+
+    /* aside */
+    aside{
+      display: flex;
+      flex-direction: column;
+      gap:16px; /* jarak antar blok */
+    }
+
+    /* tombol sosmed */
+    .social-links {
+      display: flex;
+      flex-direction: column; /* bisa ganti row untuk horizontal */
+      gap: 8px; /* jarak antar tombol */
+      margin-top: 12px; /* jarak dari judul */
+    }
+
+    /* responsive */
+    @media (max-width:880px){
+      .grid{grid-template-columns:1fr;}
+      .projects{grid-template-columns:1fr}
+      header{flex-direction:column;align-items:flex-start;gap:12px}
+      .hero{grid-template-columns:1fr;justify-items:center;text-align:center;gap:12px;}
+      nav{display:none;}
+      .cta{justify-content:center;}
+    }
+
+    @media (max-width:480px){
+      body{padding:12px;}
+      .hero h1{font-size:18px;}
+      .hero p{font-size:14px;}
+      .btn{padding:8px 12px;font-size:14px;}
+      .avatar{width:120px;height:120px;}
+      .projects{gap:10px;}
+    }
+
+    /* tombol sosmed */
+    .btn-instagram {background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); color:white;}
+    .btn-instagram:hover{filter: brightness(1.1);}
+    .btn-tiktok{background: linear-gradient(45deg, #25F4EE, #EE1D52, #010101); color: white;}
+    .btn-tiktok:hover{filter: brightness(1.1);}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <header>
+      <div class="brand">
+        <div class="logo">R</div>
+        <div>
+          <div style="font-weight:700">Revan Pratama</div>
+          <div style="font-size:12px;color:var(--muted)">Student / Web Developer</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">Tentang</a>
+        <a href="#projects">Projek</a>
+        <a href="#skills">Skill</a>
+        <a href="#contact">Kontak</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+  <div class="avatar">
+    <img src="images/petflow.jpg" alt="Foto Revan">
+  </div>
+  <div>
+    <h1>Halo, aku Revan — pembuat web sederhana</h1>
+    <p class="muted">Saya sedang belajar web server &amp; front-end. Senang membuat UI yang bersih dan fungsional.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#contact">Hubungi</a>
+      <a class="btn btn-ghost" href="#projects">Lihat Projek</a>
+    </div>
+  </div>
+</section>
+
+    <!-- MAIN GRID -->
+    <div class="grid">
+      <main>
+        <section id="about" class="card">
+          <h3>Tentang Saya</h3>
+          <p class="muted">Saya seorang siswa SMK kelas XI jurusan TKJ. Saya tertarik pada pembuatan website, jaringan dasar, dan automasi sederhana. Pada tugas ini saya membuat sebuah web server untuk menampilkan portfolio singkat yang responsif dan bisa dijalankan di lokal.</p>
+        </section>
+
+        <section id="projects" class="card">
+          <h3>Projek</h3>
+          <div class="projects">
+            <article class="project">
+              <h4>Website Sekolah</h4>
+              <p class="muted">Landing page informatif untuk kegiatan OSIS dan pengumuman sekolah.</p>
+              <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive</span></div>
+            </article>
+            <article class="project">
+              <h4>Web Hotspot MikroTik</h4>
+              <p class="muted">Antarmuka login hotspot sederhana untuk praktikum jaringan.</p>
+              <div class="tags"><span class="tag">HTML</span><span class="tag">Networking</span></div>
+            </article>
+            <article class="project">
+              <h4>Mini E-Commerce</h4>
+              <p class="muted">Demo katalog produk dengan tata letak grid.</p>
+              <div class="tags"><span class="tag">HTML</span><span class="tag">JS</span></div>
+            </article>
+            <article class="project">
+              <h4>Artikel &amp; Jurnal</h4>
+              <p class="muted">Platform sederhana untuk menampilkan ringkasan tugas mata pelajaran.</p>
+              <div class="tags"><span class="tag">Markdown</span><span class="tag">Convert</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="contact" class="card">
+          <h3>Kontak</h3>
+          <p class="muted">Tinggalkan pesan jika ingin berkolaborasi atau menanyakan tugas.</p>
+          <form onsubmit="handleSubmit(event)">
+            <input type="text" id="name" placeholder="Nama" required />
+            <input type="email" id="email" placeholder="Email" required />
+            <textarea id="message" placeholder="Pesan" required></textarea>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+              <button class="btn btn-primary" type="submit">Kirim</button>
+              <div id="feedback" class="muted" style="font-size:13px"></div>
+            </div>
+          </form>
+        </section>
+      </main>
+
+      <aside>
+        <section class="card profile-card">
+          <div style="width:84px;height:84px;margin:0 auto;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#60a5fa,#7c3aed);display:grid;place-items:center;color:white;font-weight:700">R</div>
+          <h3>Revan Pratama</h3>
+          <p class="muted">Tekaje Smeksa — Pengembang Web pemula</p>
+          <div class="skills" id="skills">
+            <div class="skill">HTML</div>
+            <div class="skill">Python</div>
+            <div class="skill">MikroTik</div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h4>Riwayat Pendidikan</h4>
+          <ul style="padding-left:18px;margin:8px 0;color:var(--muted)">
+            <li>SDN BANDAR KIDUL 1 (2014-2020)</li>
+            <li>SMPN 2 KOTA KEDIRI (2020-2023)</li>
+            <li>SMKN 1 KOTA KEDIRI (2024-Sekarang)</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h4>Media Sosial</h4>
+          <div class="social-links">
+            <a href="https://www.instagram.com/_repanoir?igsh=MW54Z2xuZ2ZwMm00eQ==" target="_blank" class="btn btn-instagram">
+              <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.tiktok.com/@rpanteq?_t=ZS-8zuDeZ8dJMA&_r=1" target="_blank" class="btn btn-tiktok">
+              <i class="fab fa-tiktok"></i> TikTok
+            </a>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <footer>
+      <p>© 2025 Revan — Dibuat dengan HTML &amp; CSS sederhana.</p>
+      <div style="overflow:hidden;line-height:0;">
+  <svg viewBox="0 0 500 50" preserveAspectRatio="none" style="display:block;width:100%;height:50px;">
+    <path d="M0,30 C150,50 350,0 500,30 L500,50 L0,50 Z" style="stroke:none; fill:#2563eb;"></path>
+  </svg>
+</div>
+    </footer>
+  </div>
+
+  <script>
+    function handleSubmit(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const feedback = document.getElementById('feedback');
+      feedback.textContent = 'Terima kasih, ' + (name || 'teman') + '! Pesanmu sudah tercatat (demo).';
+      setTimeout(()=> feedback.textContent = '', 4000);
+      e.target.reset();
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (ev)=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){ ev.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
+      });
+    });
+  </script>
+</body>
+</html>
